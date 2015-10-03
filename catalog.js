@@ -5,7 +5,7 @@ prompt.start();
 
 prompt.get(['firstname', 'lastname', 'address1', 'address2', 'city', 'state', 'zipcode'], function (err, result) {
 
-    monroeSignUp();
+    oldiesSignUp();
 });
 
 function blairSignUp(){
@@ -57,36 +57,7 @@ function monroeSignUp(){
         }
     );}
 
-//Doesnt work
-function strombergsSignUp() {
-    var r = request.post(
-        'https://www.strombergschickens.com/index.php',
-         
-        { form: { address1: '32 High Street', 
-                  address2: '', 
-		  city: "New Brunswick", 
-                  company: '', 
-                  email: 'info@strombergschickens.com', 
-                  firstName: 'John', 
-                  lastName: "Ryan", 
-                  state: 'NJ', 
-                  zip: '08901', 
-                  action: 'CatalogRequest', 
-                  category: 'Catalog', 
-                  country: 'United States',
-                  hear: 'Google', 
-                  title: '',
-                  phone:'6097843232', 
-                  req_company: 'n', 
-                  req_title: 'n', 
-                  submit: 'Request Catalog'}, 
-          followAllRedirects: true}, 
-        function (error, response, body) {
-            console.log(response.request.uri);
-        }
-    );
-}
-
+//probably works
 function momaSignUp() {
     var r = request.post(
         'http://www.momastore.org/webapp/wcs/stores/servlet/AjaxRequestCatalogCmd',
@@ -105,6 +76,29 @@ function momaSignUp() {
                   state: 'NJ', 
                   storeId: '10001',
                   successURL: 'MoMARequestCatalogSuccessView',
+                  zip: '08901'},
+          followAllRedirects: true}, 
+        function (error, response, body) {
+            console.log(response.request.uri);
+        }
+    );
+}
+
+function oldiesSignUp() {
+    var r = request.post(
+        'http://www.oldies.com/catalog-request/',
+         //capitalize city
+        { form: { address: '0',
+                  address1: '32 HIGH STREET', 
+                  address2: '', 
+                  catalog: 'movie,cd,book,45,gift', 
+		  city: "NEW BRUNSWICK", 
+                  fullname: 'John Ryan', 
+                  fuseaction: 'CatalogRequest.Save', 
+                  int: 'false',
+                  referrer: '',
+                  state: 'NJ', 
+                  verify: 'true',
                   zip: '08901'},
           followAllRedirects: true}, 
         function (error, response, body) {
