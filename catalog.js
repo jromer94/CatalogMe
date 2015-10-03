@@ -57,6 +57,34 @@ function monroeSignUp(){
         }
     );}
 
+//same as monroe just diff cat
+function ginnysSignUp(){
+    var r = request.post(
+        'https://www.ginnys.com/catalog/request_catalog.cmd',
+         
+        { form: { address1: '12 high street',
+                  address2: '',
+                  addressValidation: 'true',
+                  catalog: 'G,J',
+                  city: "New Brunswick",
+                  countryCode: 'US',
+                  emailAddress: '',
+                  firstName: 'John',
+                  form_state: 'requestCatalogForm',
+                  lastName: "test",
+                  needPhoneValidation: 'false',
+                  phone: '',
+                  state: 'NJ',
+                  title: '',
+                  validateZipCode: 'Y',
+                  x: '0',
+                  y: '0',
+                  zipCode: '08901'}, followAllRedirects: true}, 
+        function (error, response, body) {
+            console.log(response.request.uri);
+        }
+    );}
+
 //probably works
 function momaSignUp() {
     var r = request.post(
