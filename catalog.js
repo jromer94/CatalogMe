@@ -6,8 +6,8 @@ prompt.start();
 prompt.get(['firstname', 'lastname', 'address1', 'address2', 'city', 'state', 'zipcode'], function (err, result) {
 
     console.log("worked");
-    blairSignUp();
-    strombergsSignUp();
+    //blairSignUp();
+    momaSignUp();
 });
 
 function blairSignUp(){
@@ -58,6 +58,32 @@ function strombergsSignUp() {
                   req_company: 'n', 
                   req_title: 'n', 
                   submit: 'Request Catalog'}, 
+          followAllRedirects: true}, 
+        function (error, response, body) {
+            console.log(response.request.uri);
+        }
+    );
+}
+
+function momaSignUp() {
+    var r = request.post(
+        'http://www.momastore.org/webapp/wcs/stores/servlet/AjaxRequestCatalogCmd',
+         
+        { form: { address1: '32 High Street', 
+                  address2: '', 
+                  catalogId: '10451', 
+		  city: "New Brunswick", 
+                  country: 'US',
+                  email: '', 
+                  firstName: 'John', 
+		  langId: '-1',
+                  lastName: "Ryan", 
+                  origin: '5D',
+                  requesttype: 'ajax',
+                  state: 'NJ', 
+                  storeId: '10001',
+                  successURL: 'MoMARequestCatalogSuccessView',
+                  zip: '08901'},
           followAllRedirects: true}, 
         function (error, response, body) {
             console.log(response.request.uri);
