@@ -5,16 +5,24 @@ prompt.start();
 
 prompt.get(['firstname', 'lastname', 'address1', 'address2', 'city', 'state', 'zipcode'], function (err, result) {
 
-    console.log("worked");
-    //blairSignUp();
-    momaSignUp();
+    monroeSignUp();
 });
 
 function blairSignUp(){
     var r = request.post(
         'https://www.blair.com/catalog/request_catalog_command.cmd',
          
-        { form: { address1: 'Test', address2: '', city: "New Brunswick", company: '', emailAddress: '', emailFormat: 'html', firstName: 'Test', form_state: 'requestCatalogForm', lastName: "test", state: 'NJ', zipCode: '08901'}, followAllRedirects: true}, 
+        { form: { address1: 'Test',
+                  address2: '',
+                  city: "New Brunswick",
+                  company: '',
+                  emailAddress: '',
+                  emailFormat: 'html',
+                  firstName: 'Test',
+                  form_state: 'requestCatalogForm',
+                  lastName: "test",
+                  state: 'NJ',
+                  zipCode: '08901'}, followAllRedirects: true}, 
         function (error, response, body) {
             console.log(response.request.uri);
         }
@@ -22,18 +30,32 @@ function blairSignUp(){
 
 }
 
-//TODO
 function monroeSignUp(){
     var r = request.post(
         'https://www.monroeandmain.com/catalog/request_catalog.cmd',
          
-        { form: { address1: 'Test', address2: '', city: "New Brunswick", company: '', emailAddress: '', emailFormat: 'html', firstName: 'Test', form_state: 'requestCatalogForm', lastName: "test", state: 'NJ', zipCode: '08901'}, followAllRedirects: true}, 
+        { form: { address1: '12 high street',
+                  address2: '',
+                  addressValidation: 'true',
+                  catalog: 'W',
+                  city: "New Brunswick",
+                  countryCode: 'US',
+                  emailAddress: '',
+                  firstName: 'John',
+                  form_state: 'requestCatalogForm',
+                  lastName: "test",
+                  needPhoneValidation: 'false',
+                  phone: '',
+                  state: 'NJ',
+                  title: '',
+                  validateZipCode: 'Y',
+                  x: '0',
+                  y: '0',
+                  zipCode: '08901'}, followAllRedirects: true}, 
         function (error, response, body) {
             console.log(response.request.uri);
         }
-    );
-
-}
+    );}
 
 //Doesnt work
 function strombergsSignUp() {
